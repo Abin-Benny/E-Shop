@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static 'styles/style.css' %}" rel="stylesheet"/>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand text-success" href="#">Joy's&nbsp&nbsp<span class="text-danger">E-Shop</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% for i in links %}
+                <a class="dropdown-item" href="{{i.get_url}}">{{i.category_name}}</a>
+          {% endfor %}
+          <div class="dropdown-divider"></div>
+         <a class="dropdown-item" href="{% url 'index' %}">All Category</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'index' %}">
+        {%csrf_token%}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchname" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!--Navbar-->
+{% block content %}
+
+{% endblock %}
+
+<!-- Footer -->
+  <footer class="text-center text-white bg-dark">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      <p>Created By <span class="text-danger">Abin Benny</span> | <span class="far fa-copyright"></span> 2021 All Rights Reserved.</p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% block sweet %}
+{% endblock %}
+
+</html>

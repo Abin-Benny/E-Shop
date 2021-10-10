@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<!--Products List-->
+<section class="sdetail bg-secondary">
+    <div class="container-fluid">
+
+        <div class="row mt-5">
+            {% for i in product %}
+            <div class="col-md-2" id="cards">
+                <div class="card  bg-dark" style="width: 18rem;">
+                    <a href="#"><img class="card-img-top" src="{{MEDIA_URL}}{{i.image.url}}" height="300px" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <center><bold><a href="#" class="card-text text-white">{{i.product_name}}</a></bold></center>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!--Products List-->
+{% endblock %}
+
+{% block sweet %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    {% for msg in messages %}
+        swal("Sorry!", "{{msg}}");
+    {% endfor %}
+</script>
+{% endblock %}
+
+
+
