@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block accounts %}
+<span class="text-muted">Welcome!</span>
+<div>
+    <a href="{% url 'index' %}">Home</a> |
+	<a href="{% url 'register' %}"> Register</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="section-conten padding-y bg-secondary" style="min-height:84vh">
+
+	<div class="card mx-auto bg-dark" style="max-width: 380px; margin-top:100px;">
+      <div class="card-body">
+          <h4 class="card-title mb-4 text-danger">Sign <span class="text-white">in</span></h4>
+      <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="form-group">
+			 <input name="username" class="form-control" placeholder="Username" type="text">
+          </div>
+          <div class="form-group">
+			<input name="password" class="form-control" placeholder="Password" type="password">
+          </div>
+
+          <div class="form-group">
+          	<a href="#" class="float-right">Forgot password?</a>
+          </div>
+          <div class="form-group">
+              <center><button type="submit" class="btn btn-success btn-block"> Login </button></center>
+          </div>
+          <center><h6 class="text-danger">{{msg}}</h6></center>
+      </form>
+      </div>
+    </div>
+     <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}" class="text-white">Sign up</a></p>
+     <br><br>
+</section>
+{% endblock %}

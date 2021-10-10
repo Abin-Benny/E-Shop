@@ -4,6 +4,22 @@
 Home
 {% endblock %}
 
+{% block accounts %}
+    {% if user.is_authenticated %}
+         <span class="text-muted">Welcome!&nbsp{{user.first_name}}</span>
+        <div>
+            <a href="{% url 'index' %}">Home</a> |
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    {% else %}
+        <span class="text-muted">Welcome!</span>
+        <div>
+            <a href="{% url 'login' %}">Sign in</a> |
+            <a href="{% url 'register' %}"> Register</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <!--Products List-->
 <section class="sdetail bg-secondary">

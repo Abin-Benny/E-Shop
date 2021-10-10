@@ -8,7 +8,7 @@
     <link href="{% static 'styles/style.css'%}" rel="stylesheet"/>
 </head>
 <body>
-<!--Navbar-->
+<!--Navbar1-->
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand text-success" href="#">Joy's&nbsp&nbsp<span class="text-danger">E-Shop</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,19 @@
          <a class="dropdown-item" href="{% url 'index' %}">All Category</a>
         </div>
       </li>
+        <center>
+            <div class="widgets-wrap ">
+          <div class="widget-header icontext">
+				<div class="text">
+                    {% block accounts %}
+
+                    {% endblock %}
+				</div>
+          </div>
+      </div>
+        </center>
     </ul>
+
     <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'index' %}">
         {%csrf_token%}
       <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchname" aria-label="Search">
@@ -40,7 +52,8 @@
     </form>
   </div>
 </nav>
-<!--Navbar-->
+<!--Navbar1-->
+
 {% block content %}
 
 {% endblock %}
