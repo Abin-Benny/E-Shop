@@ -18,12 +18,15 @@ from django.urls import path,include
 import category.categoryurls
 import accounts.accountsurls
 import store.storeurls
+import cart.carturls
 from django.conf.urls.static import static
 from .import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('SellerLogin/', admin.site.urls),
     path('', include(store.storeurls)),
     path('Category/', include(category.categoryurls)),
     path('Accounts/', include(accounts.accountsurls)),
+    path('Accounts/', include(accounts.accountsurls)),
+    path('Cart/', include(cart.carturls)),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

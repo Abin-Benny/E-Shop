@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Checkout
+{% endblock %}
+
+{% block content %}
+
+<section class="section-content padding-y bg m-5">
+<div class="container">
+
+<div class="row">
+    <aside class="col-md-12">
+
+		<div class="card">
+		<div class="card-body">
+			<dl class="dlist-align">
+			  <dt>Price:</dt>
+			  <dd class="text-right">Rs. {{price}}</dd>
+			</dl>
+			<dl class="dlist-align">
+			  <dt>Quantity:</dt>
+			  <dd class="text-right">{{num}}</dd>
+			</dl>
+			<dl class="dlist-align">
+			  <dt>Total Price:</dt>
+			  <dd class="text-right text-dark b"><strong>Rs. {{sum}}</strong></dd>
+			</dl>
+			<hr>
+			<p class="text-center mb-3">
+				<img src="{% static 'styles/image/payments.png'%}" height="26">
+			</p>
+			<a href="./place-order.html" class="btn btn-primary btn-block"> Checkout </a>
+			<a href="./store.html" class="btn btn-light btn-block">Continue Shopping</a>
+		</div> <!-- card-body.// -->
+		</div> <!-- card.// -->
+
+</aside>
+	{% endblock %}

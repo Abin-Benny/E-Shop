@@ -37,9 +37,9 @@ Product Details
 						<div class="row">
 								<div class="item-option-select">
 									{% if product.stock <= 0 %}
-										<a href="./product-detail.html" class="btn  btn-danger"> <span class="text">Out Of Stock</span> <i class="fas fa-shopping-cart"></i></a>
+										<a href="" class="btn  btn-danger"> <span class="text">Out Of Stock</span></a>
 									{% else %}
-										<a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
+										<a href="{% url 'logincheck' product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
 									{% endif %}
 							</div>
 

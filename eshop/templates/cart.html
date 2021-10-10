@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Cart
+{% endblock %}
+
+{% block content %}
+
+<section class="section-content padding-y bg m-5">
+<div class="container">
+
+<div class="row">
+	<aside class="col-md-12">
+<div class="card">
+<table class="table table-borderless table-shopping-cart">
+<thead class="text-muted">
+<tr class="small text-uppercase">
+  <th scope="col">Product</th>
+  <th scope="col" width="120">Price</th>
+  <th scope="col" width="120">Quantity</th>
+  <th scope="col" class="text-right" width="200"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>
+		{% for i in product %}
+		<figure class="itemside align-items-center">
+			<div class="aside"><img src="{{MEDIA_URL}}{{i.image.url}}" width="50" height="60"></div>
+			<figcaption class="info">
+				<a href="#" class="title text-dark">{{i.product_name}}</a>
+			</figcaption>
+		</figure>
+	</td>
+	<td>
+		<div class="price-wrap">
+			<var class="price">Rs.{{i.price}}</var>
+		</div> <!-- price-wrap .// -->
+	</td>
+
+	<td>
+		<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'checkout' i.price %}">
+        {%csrf_token%}
+      <input type="number" value="1"  min="1" max="1000" step="1" name="num"/><br>
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Checkout</button>
+    </form>
+
+	</td>
+	<td class="text-right">
+	<a href="" class="btn btn-danger"> Remove</a>
+	</td>
+
+	{% endfor %}
+</tr>
+
+</tbody>
+</table>
+</div>
+	</aside>
+
+</div>
+</div>
+</section>
+{% endblock %}
