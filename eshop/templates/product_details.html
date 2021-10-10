@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Product Details
+{% endblock %}
+
+{% block content %}
+
+<section class="mrate bg-secondary">
+	<center>
+		<div class="card bg-dark m-5" style="max-width:75%">
+			<div class="row no-gutters">
+				<div class="col-sm-4" style="background: #868e96;">
+					<img src="{{MEDIA_URL}}{{product.image.url}}" class="card-img-top h-100" alt="...">
+				</div>
+				<div class="col-sm-8">
+					<div class="card-body text-white">
+						<div class="row">
+							<div class="item-option-select ml-5">
+								<h2 class="card-title">{{product.product_name}}</h2>
+							</div>
+						</div>
+						<p class="card-text mt-3">{{product.description}}</p>
+						<hr>
+						<div class="row">
+							<div class="item-option-select">
+								<h6 class="text-primary ml-3"><bold class="text-white">Price :</bold>&nbsp&nbspRs.{{product.price}}</h6>
+							</div>
+						</div>
+							<hr>
+						<div class="row">
+							<div class="item-option-select">
+								<h6 class="text-primary ml-3"><bold class="text-white">Category</bold>&nbsp&nbsp{{product.Category}}</h6>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+								<div class="item-option-select">
+									{% if product.stock <= 0 %}
+										<a href="./product-detail.html" class="btn  btn-danger"> <span class="text">Out Of Stock</span> <i class="fas fa-shopping-cart"></i></a>
+									{% else %}
+										<a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
+									{% endif %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+	</center>
+</section>
+
+{% endblock %}

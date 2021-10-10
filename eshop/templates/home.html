@@ -13,9 +13,9 @@ Home
             {% for i in product %}
             <div class="col-md-2" id="cards">
                 <div class="card  bg-dark" style="width: 18rem;">
-                    <a href="#"><img class="card-img-top" src="{{MEDIA_URL}}{{i.image.url}}" height="300px" alt="Card image cap"></a>
+                    <a href="{{ i.get_url }}"><img class="card-img-top" src="{{MEDIA_URL}}{{i.image.url}}" height="300px" alt="Card image cap"></a>
                     <div class="card-body">
-                        <center><bold><a href="#" class="card-text text-white">{{i.product_name}}</a></bold></center>
+                        <center><bold><a href="{{ i.get_url }}" class="card-text text-white">{{i.product_name}}</a></bold></center>
                     </div>
                 </div>
             </div>

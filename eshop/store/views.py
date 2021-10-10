@@ -15,3 +15,13 @@ def index(request):
         product = products.objects.all().order_by('Category__category_name')
     return render(request, "home.html", {'product': product})
 
+def product_details(request,product_slug):
+    product = products.objects.get(slug=product_slug)
+    context = {'product': product}
+    return render(request, "product_details.html", context)
+
+
+
+
+
+
